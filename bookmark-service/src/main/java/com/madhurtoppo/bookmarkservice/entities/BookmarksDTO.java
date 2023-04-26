@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class BookmarksDTO {
     private List<Bookmark> bookmarks;
-    private int totalElements;
+    private long totalElements;
     private int currentPage;
     private int totalPages;
     private boolean isFirst;
@@ -20,8 +20,8 @@ public class BookmarksDTO {
 
     public BookmarksDTO(Page<Bookmark> bookmarkPage) {
         this.setBookmarks(bookmarkPage.getContent());
-        this.setTotalElements(bookmarkPage.getNumberOfElements());
-        this.setCurrentPage(bookmarkPage.getNumber());
+        this.setTotalElements(bookmarkPage.getTotalElements());
+        this.setCurrentPage(bookmarkPage.getNumber() + 1);
         this.setTotalPages(bookmarkPage.getTotalPages());
         this.setFirst(bookmarkPage.isFirst());
         this.setLast(bookmarkPage.isLast());
