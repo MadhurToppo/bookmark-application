@@ -1,6 +1,7 @@
 package com.madhurtoppo.bookmarkservice.controllers;
 
 import com.madhurtoppo.bookmarkservice.entities.Bookmark;
+import com.madhurtoppo.bookmarkservice.entities.BookmarksDTO;
 import com.madhurtoppo.bookmarkservice.services.BookmarkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class BookmarkController {
     private final BookmarkService bookmarkService;
 
     @GetMapping
-    public List<Bookmark> getBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page) {
+    public BookmarksDTO getBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page) {
         return bookmarkService.getBookmarks(page);
     }
 
