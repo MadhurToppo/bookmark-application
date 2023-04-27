@@ -16,7 +16,7 @@ public class BookmarksDTO {
     private int totalPages;
     @JsonProperty("isFirst")
     private boolean isFirst;
-    @JsonProperty("hasLast")
+    @JsonProperty("isLast")
     private boolean isLast;
     private boolean hasNext;
     private boolean hasPrevious;
