@@ -1,6 +1,5 @@
 package com.madhurtoppo.bookmarkservice.controllers;
 
-import com.madhurtoppo.bookmarkservice.entities.Bookmark;
 import com.madhurtoppo.bookmarkservice.entities.BookmarksDTO;
 import com.madhurtoppo.bookmarkservice.services.BookmarkService;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("api/bookmarks")
 @RequiredArgsConstructor
@@ -18,8 +15,12 @@ public class BookmarkController {
     private final BookmarkService bookmarkService;
 
     @GetMapping
-    public BookmarksDTO getBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page) {
-        return bookmarkService.getBookmarks(page);
+    public BookmarksDTO getBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                     @RequestParam(name = "query", defaultValue = "") String query) {
+        if (query == null || query.trim().length() == 0) {
+            return bookmarkService.getBookmarks(page);
+        }
+        return bookmarkService.searchBookmarks(query, page);
     }
 
 }
