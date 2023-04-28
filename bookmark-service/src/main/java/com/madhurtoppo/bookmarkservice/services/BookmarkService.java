@@ -1,8 +1,6 @@
 package com.madhurtoppo.bookmarkservice.services;
 
-import com.madhurtoppo.bookmarkservice.entities.Bookmark;
 import com.madhurtoppo.bookmarkservice.entities.BookmarkDTO;
-import com.madhurtoppo.bookmarkservice.entities.BookmarkMapper;
 import com.madhurtoppo.bookmarkservice.entities.BookmarksDTO;
 import com.madhurtoppo.bookmarkservice.repositories.BookmarkRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,13 +17,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class BookmarkService {
 
     private final BookmarkRepository bookmarkRepository;
-    private final BookmarkMapper bookmarkMapper;
 
     @Transactional(readOnly = true)
     public BookmarksDTO getBookmarks(Integer page) {
         int pageNo = page < 1 ? 0 : page - 1;
         Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "creationTime");
         Page<BookmarkDTO> bookmarks = bookmarkRepository.findBookmarks(pageable);
+        return new BookmarksDTO(bookmarks);
+    }
+
+    @Transactional(readOnly = true)
+    public BookmarksDTO searchBookmarks(String query, Integer page) {
+        int pageNo = page < 1 ? 0 : page - 1;
+        Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "creationTime");
+        Page<BookmarkDTO> bookmarks = bookmarkRepository.searchBookmarks(query, pageable);
         return new BookmarksDTO(bookmarks);
     }
 }
