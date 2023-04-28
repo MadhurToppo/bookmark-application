@@ -24,7 +24,7 @@ jobs:
       - name: Build with Maven
         run: ./mvnw verify
 
-      - if: ${{ github.ref == 'refs/heads/development' }}
+      - if: ${{ github.ref == 'refs/heads/master' }}
         name: Build and Publish Docker Image
         run: |
           ./mvnw clean package spring-boot:build-image -DskipTests
