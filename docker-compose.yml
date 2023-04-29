@@ -8,19 +8,3 @@ services:
       - POSTGRES_DB=appdb
     ports:
       - "15432:5432"
-
-  bookmark-service:
-    build:
-      context: bookmark-service
-      dockerfile: Dockerfile-layered
-    environment:
-      SPRING_PROFILES_ACTIVE: docker
-      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
-      SPRING_DATASOURCE_URL: jdbc:postgresql://bookmark-db:5432/appdb
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-    ports:
-      - "18080:8080"
-    restart: always
-    depends_on:
-      - bookmark-db
