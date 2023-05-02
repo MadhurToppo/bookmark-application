@@ -1,5 +1,5 @@
 export interface BookmarksResponse {
-  data: Bookmark[],
+  bookmarks: Bookmark[],
   totalElements: number,
   currentPage: number,
   totalPages: number,
