@@ -3,7 +3,7 @@ import {Bookmark} from "@/services/models";
 import Link from "next/link";
 
 interface BookmarkProps {
-  bookmark: Bookmark
+  bookmark: Bookmark;
 }
 
 const Bookmark: React.FC<BookmarkProps> = ({bookmark}) => (
@@ -14,6 +14,6 @@ const Bookmark: React.FC<BookmarkProps> = ({bookmark}) => (
       </h5>
     </div>
   </div>
-)
+);
 
 export default Bookmark;
