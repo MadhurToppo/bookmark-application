@@ -1,5 +1,6 @@
 import React from "react";
 import {BookmarksResponse} from "@/services/models";
+import Bookmark from "@/components/Bookmark";
 
 interface BookmarksProps {
   bookmarksResponse: BookmarksResponse
@@ -7,7 +8,7 @@ interface BookmarksProps {
 
 const Bookmarks: React.FC<BookmarksProps> = ({bookmarksResponse}) => (
   <div>
-    {bookmarksResponse.bookmarks.map(bookmark => <h2 key={bookmark.name}>{bookmark.name}</h2>)}
+    {bookmarksResponse.bookmarks.map(b => <Bookmark key={b.id} bookmark={b}/>)}
   </div>
 )
 

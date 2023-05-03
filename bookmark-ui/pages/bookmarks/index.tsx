@@ -7,21 +7,19 @@ interface HomeProps {
   bookmarksResponse: BookmarksResponse
 }
 
-const Home: NextPage<HomeProps> = (homeProps) => {
-  return (
-    <div>
-      <h1>Welcome to Bookmark Application</h1>
-      <Bookmarks bookmarksResponse={homeProps.bookmarksResponse}/>
-    </div>
-  )
-}
+const Home: NextPage<HomeProps> = (homeProps) => (
+  <div>
+    <h1>Welcome to Bookmark Application</h1>
+    <Bookmarks bookmarksResponse={homeProps.bookmarksResponse}/>
+  </div>
+)
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const {page = 1} = context.query
-  const responseData = await fetchBookmarks(parseInt(String(page)))
+  const bookmarksResponse = await fetchBookmarks(parseInt(String(page)))
   return {
     props: {
-      bookmarksResponse: responseData
+      bookmarksResponse: bookmarksResponse
     }
   }
 }
