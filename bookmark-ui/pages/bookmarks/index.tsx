@@ -9,7 +9,6 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = (homeProps) => (
   <div>
-    <h1>Welcome to Bookmark Application</h1>
     <Bookmarks bookmarksResponse={homeProps.bookmarksResponse}/>
   </div>
 )
