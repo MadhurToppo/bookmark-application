@@ -1,5 +1,6 @@
 import React from "react";
 import {Bookmark} from "@/services/models";
+import Link from "next/link";
 
 interface BookmarkProps {
   bookmark: Bookmark
@@ -7,8 +8,11 @@ interface BookmarkProps {
 
 const Bookmark: React.FC<BookmarkProps> = ({bookmark}) => (
   <div>
-    <h2>{bookmark.name}</h2>
-    <h2>{bookmark.url}</h2>
+    <div className="alert alert-primary" role="alert">
+      <h5>
+        <Link legacyBehavior={true} href={bookmark.url}><a target={"_blank"} className={"text-decoration-none"}>{bookmark.name}</a></Link>
+      </h5>
+    </div>
   </div>
 )
 
