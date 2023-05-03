@@ -18,7 +18,6 @@ const AddBookmark: NextPage = () => {
       url
     }
     const response = await saveBookmark(payload)
-    console.log("SaveBookmark response: ", response)
     setName("");
     setUrl("");
     setMessage("Bookmark saved successfully")

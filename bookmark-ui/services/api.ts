@@ -9,8 +9,6 @@ const apiGetUrl = () => {
 }
 
 export const fetchBookmarks = async (page: number, query: String): Promise<BookmarksResponse> => {
-  console.log("From Fetch bookmarks, serverRuntimeConfig:", serverRuntimeConfig);
-  console.log("From Fetch bookmarks, publicRuntimeConfig", publicRuntimeConfig);
 
   let url = `${apiGetUrl()}/api/bookmarks?page=${page}`;
   if (query) {
@@ -21,8 +19,6 @@ export const fetchBookmarks = async (page: number, query: String): Promise<Bookm
 };
 
 export const saveBookmark = async (bookmark: { name: string, url: string }) => {
-  console.log("From add bookmark, serverRuntimeConfig:", serverRuntimeConfig);
-  console.log("From add bookmark, publicRuntimeConfig", publicRuntimeConfig);
   const axiosResponse = await axios.post(`${apiGetUrl()}/api/bookmarks`, bookmark);
   return axiosResponse.data;
 };
