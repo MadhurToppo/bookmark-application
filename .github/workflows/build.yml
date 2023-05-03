@@ -30,3 +30,32 @@ jobs:
           ./mvnw clean package spring-boot:build-image -DskipTests
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push ${{ secrets.DOCKER_USERNAME }}/bookmark-service
+
+  build-bookmark-ui:
+    name: Build bookmark-ui
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./bookmark-ui
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+          cache-dependency-path: bookmark-ui/yarn.lock
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - if: ${{ github.ref == 'refs/heads/master' }}
+        name: Build and Publish Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/bookmark-ui .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/bookmark-ui
