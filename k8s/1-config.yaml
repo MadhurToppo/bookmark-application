@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bookmark-config
+data:
+  postgres_host: postgres
+  postgres_port: "5432"
+  postgres_dbname: appdb
+  postgres_username: postgres
+  postgres_password: postgres
