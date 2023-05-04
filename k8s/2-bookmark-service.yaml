@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookmark-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookmark-service-pod
+  template:
+    metadata:
+      labels:
+        app: bookmark-service-pod
+    spec:
+      containers:
+      - name: bookmark-service
+        image: madhurtoppo/bookmark-service
+        ports:
+          - containerPort: 8080
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s
