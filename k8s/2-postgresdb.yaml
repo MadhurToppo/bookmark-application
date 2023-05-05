@@ -20,13 +20,13 @@ spec:
         env:
           - name: POSTGRES_USER
             valueFrom:
-              configMapKeyRef:
-                name: bookmark-config
+              secretKeyRef:
+                name: bookmark-secrets
                 key: postgres_username
           - name: POSTGRES_PASSWORD
             valueFrom:
-              configMapKeyRef:
-                name: bookmark-config
+              secretKeyRef:
+                name: bookmark-secrets
                 key: postgres_password
           - name: POSTGRES_DB
             valueFrom:
