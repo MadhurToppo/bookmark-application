@@ -22,7 +22,7 @@ $ ./run.sh stop_infra
 ## Running on Kubernetes
 
 ```shell
-$ cd springboot-kubernetes-youtube-series
+$ cd bookmark-application
 $ cd kind
 $ ./create-cluster.sh
 $ cd ../k8s/
@@ -39,5 +39,12 @@ $ ./destroy-cluster.sh
 * UI endpoint with NodePort http://localhost:30080/
 * API endpoint with Ingress http://localhost/bookmarker-api/api/bookmarks
 * UI endpoint with Ingress http://localhost/
+
+## Troubleshooting
+There can be issues where the services fail to communicate.
+Solution: Delete all unused containers, images, networks etc.
+```shell
+$ docker system prune -f
+```
 
 Project inspired from https://www.youtube.com/playlist?list=PLuNxlOYbv61h66_QlcjCEkVAj6RdeplJJ
