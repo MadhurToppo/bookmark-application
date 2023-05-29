@@ -1,9 +1,8 @@
 package com.madhurtoppo.bookmarkservice.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.Instant;
+import lombok.*;
 
 @Entity
 @Table(name = "bookmarks")
@@ -20,7 +19,9 @@ public class Bookmark {
 
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String url;
+
     private Instant creationTime;
 }

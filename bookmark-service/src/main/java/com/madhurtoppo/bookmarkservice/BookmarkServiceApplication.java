@@ -9,5 +9,4 @@ public class BookmarkServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookmarkServiceApplication.class, args);
 	}
-
 }

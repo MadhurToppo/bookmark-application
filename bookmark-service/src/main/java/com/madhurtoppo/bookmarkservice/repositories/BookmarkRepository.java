@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
-    @Query("select new com.madhurtoppo.bookmarkservice.entities.BookmarkDTO(b.id, b.name, b.url, b.creationTime) from Bookmark b")
+    @Query("select new com.madhurtoppo.bookmarkservice.entities.BookmarkDTO(b.id, b.name, b.url,"
+            + " b.creationTime) from Bookmark b")
     Page<BookmarkDTO> findBookmarks(Pageable pageable);
 
     Page<BookmarkDTO> findByNameContainingIgnoreCase(String query, Pageable pageable);
-
 }
