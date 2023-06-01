@@ -29,7 +29,7 @@ public class BookmarkController {
         if (query == null || query.trim().length() == 0) {
             return bookmarkService.getAllBookmarks(page);
         }
-        return bookmarkService.searchBookmarks(query, page);
+        return bookmarkService.searchAllBookmarks(query, page);
     }
 
     @PostMapping
