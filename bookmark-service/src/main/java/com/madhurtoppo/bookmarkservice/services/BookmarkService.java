@@ -28,7 +28,7 @@ public class BookmarkService {
     }
 
     @Transactional(readOnly = true)
-    public BookmarksDTO searchBookmarks(String query, Integer page) {
+    public BookmarksDTO searchAllBookmarks(String query, Integer page) {
         int pageNo = page < 1 ? 0 : page - 1;
         Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "creationTime");
         Page<BookmarkDTO> bookmarks = bookmarkRepository.findByNameContainingIgnoreCase(query, pageable);
