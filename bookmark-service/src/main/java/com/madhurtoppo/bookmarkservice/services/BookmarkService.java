@@ -20,7 +20,7 @@ public class BookmarkService {
     private final BookmarkMapper mapper;
 
     @Transactional(readOnly = true)
-    public BookmarksDTO getBookmarks(Integer page) {
+    public BookmarksDTO getAllBookmarks(Integer page) {
         int pageNo = page < 1 ? 0 : page - 1;
         Pageable pageable = PageRequest.of(pageNo, 10, Sort.Direction.DESC, "creationTime");
         Page<BookmarkDTO> bookmarks = bookmarkRepository.findBookmarks(pageable);
