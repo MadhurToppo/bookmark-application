@@ -9,6 +9,7 @@ import lombok.Setter;
 public class CreateBookmarkRequest {
     @NotEmpty(message = "Name should not be empty")
     private String name;
+
     @NotEmpty(message = "Url should not be empty")
     private String url;
 }

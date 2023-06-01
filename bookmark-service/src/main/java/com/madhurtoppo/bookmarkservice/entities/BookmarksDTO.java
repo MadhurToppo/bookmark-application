@@ -1,11 +1,10 @@
 package com.madhurtoppo.bookmarkservice.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.domain.Page;
-
-import java.util.List;
 
 @Getter
 @Setter
@@ -14,10 +13,13 @@ public class BookmarksDTO {
     private long totalElements;
     private int currentPage;
     private int totalPages;
+
     @JsonProperty("isFirst")
     private boolean isFirst;
+
     @JsonProperty("isLast")
     private boolean isLast;
+
     private boolean hasNext;
     private boolean hasPrevious;
 
