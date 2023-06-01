@@ -19,14 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/bookmarks")
 @RequiredArgsConstructor
 public class BookmarkController {
+
     private final BookmarkService bookmarkService;
 
     @GetMapping
-    public BookmarksDTO getBookmarks(
+    public BookmarksDTO getAllBookmarks(
             @RequestParam(name = "page", defaultValue = "1") final Integer page,
             @RequestParam(name = "query", defaultValue = "") final String query) {
         if (query == null || query.trim().length() == 0) {
-            return bookmarkService.getBookmarks(page);
+            return bookmarkService.getAllBookmarks(page);
         }
         return bookmarkService.searchBookmarks(query, page);
     }
