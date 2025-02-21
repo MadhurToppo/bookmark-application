@@ -7,9 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateBookmarkRequest {
-    @NotEmpty(message = "Name should not be empty")
-    private String name;
+  @NotEmpty(message = "Name should not be empty")
+  private String name;
 
-    @NotEmpty(message = "Url should not be empty")
-    private String url;
+  @NotEmpty(message = "Url should not be empty")
+  private String url;
 }
